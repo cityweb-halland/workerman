@@ -215,11 +215,13 @@ class Timer
     /**
      * Remove a timer.
      *
-     * @param int $timerId
+     * @param ?int $timerId
      * @return bool
      */
-    public static function del(int $timerId): bool
+    public static function del(?int $timerId): bool
     {
+		if(!$timerId) return true;
+
         if (self::$event) {
             return self::$event->offDelay($timerId);
         }
